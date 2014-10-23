@@ -11,8 +11,11 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
+    var timer = NSTimer()
     let locationManager = CLLocationManager()
+    
     @IBOutlet weak var settingsButton: UIButton?
+    @IBOutlet var minorStars: Array<UIImageView>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +60,52 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         popover?.sourceRect = self.settingsButton!.frame
         self.presentViewController(nav, animated: true, completion: nil)        
     }
-
-
+    
+    @IBAction func startTimer(sender : UIButton!) {
+        if(sender.selected)
+        {
+            stopTimer()
+        }
+        else
+        {
+            startTimer()
+        }
+        sender.selected = !sender.selected
+    }
+    
+    func startTimer()
+    {
+        NSLog("Starting timer");
+        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
+    }
+    
+    func updateTimer()
+    {
+        NSLog("Timer has fired");
+        updateImages()
+    }
+    
+    func stopTimer()
+    {
+        NSLog("Stopping timer")
+        timer.invalidate()
+    }
+    
+    func updateImages()
+    {
+        NSLog("Star count: \(self.minorStars?.count)")
+        for minorStar in self.minorStars! {
+            if minorStar.hidden == false {
+                UIView.animateWithDuration(1.5, animations: {
+                    minorStar.alpha = 0.0
+                    }, completion: {
+                        (value: Bool) in
+                        minorStar.hidden = true
+                })
+                return
+            }
+        }
+    }
+    
 }
 
