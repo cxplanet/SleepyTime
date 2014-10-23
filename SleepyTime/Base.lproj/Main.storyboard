@@ -17,18 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEx-8B-Elu">
-                                <rect key="frame" x="518" y="28" width="66" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="66" id="4iJ-SW-vMN"/>
-                                </constraints>
-                                <state key="normal" title="Settings"/>
-                                <connections>
-                                    <action selector="showSettings" destination="BYZ-38-t0r" eventType="touchUpInside" id="VMP-cd-5el"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MO2-8S-Qg7">
-                                <rect key="frame" x="439" y="24" width="71" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MO2-8S-Qg7">
+                                <rect key="frame" x="105" y="16" width="71" height="30"/>
                                 <state key="normal" title="Run Timer">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -62,6 +52,16 @@
                                     <constraint firstAttribute="centerY" secondItem="Vlt-3X-qtW" secondAttribute="centerY" id="SD7-4n-gks"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEx-8B-Elu">
+                                <rect key="frame" x="16" y="20" width="66" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="66" id="4iJ-SW-vMN"/>
+                                </constraints>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="showSettings" destination="BYZ-38-t0r" eventType="touchUpInside" id="VMP-cd-5el"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -97,11 +97,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-6V-6sq">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-6V-6sq">
                                 <rect key="frame" x="165" y="104" width="271" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="Gup-cz-hzK"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="changeBrightness:" destination="x5d-Ya-xeL" eventType="valueChanged" id="GJD-aC-2oA"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,6 +113,9 @@
                             <constraint firstItem="Oai-6V-6sq" firstAttribute="top" secondItem="MgU-7M-ED9" secondAttribute="bottom" constant="84" id="34I-Db-naC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="screenBrightness" destination="Oai-6V-6sq" id="XYq-K3-CTW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S46-fu-xjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

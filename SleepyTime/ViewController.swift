@@ -12,6 +12,7 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
     var timer = NSTimer()
+    var scaleFactor = 1.0 as CGFloat;
     let locationManager = CLLocationManager()
     
     @IBOutlet weak var settingsButton: UIButton?
@@ -96,16 +97,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         NSLog("Star count: \(self.minorStars?.count)")
         for minorStar in self.minorStars! {
             if minorStar.hidden == false {
-                UIView.animateWithDuration(1.5, animations: {
-                    minorStar.alpha = 0.0
+                let centerPoint = minorStar.center
+                // rotate and scale the star
+                UIView.animateWithDuration(2.5, animations: {
+                    let transScale = 0.75/self.scaleFactor * 0.8
+                    let rotation = 360 * self.scaleFactor
+                    let rotate = CGAffineTransformMakeRotation(rotation)
+                    let scale = CGAffineTransformMakeScale(transScale, transScale)
+                    minorStar.transform = CGAffineTransformConcat(rotate, scale)
+                    minorStar.center = centerPoint
                     }, completion: {
-                        (value: Bool) in
-                        minorStar.hidden = true
+                        (Bool) in
+                        self.scaleFactor++
+                        if self.scaleFactor == 5.0 {
+                            self.scaleFactor = 1.0
+                            
+                            UIView.animateWithDuration(1.0,
+                                animations: {
+                                    minorStar.alpha = 0.0
+                                },
+                                completion: { finished in
+                                    minorStar.hidden = true
+                            })
+                        }
                 })
                 return
             }
         }
     }
-    
+
 }
 
