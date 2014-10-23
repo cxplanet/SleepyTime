@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC60ADC219F8BDF100E1C335 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC60ADC119F8BDF100E1C335 /* SettingsController.swift */; };
 		EC88C33319F85A5B0041432B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88C33219F85A5B0041432B /* AppDelegate.swift */; };
 		EC88C33519F85A5B0041432B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88C33419F85A5B0041432B /* ViewController.swift */; };
 		EC88C33819F85A5B0041432B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC88C33619F85A5B0041432B /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC60ADC119F8BDF100E1C335 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		EC88C32D19F85A5B0041432B /* SleepyTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepyTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC88C33119F85A5B0041432B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC88C33219F85A5B0041432B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				EC88C33B19F85A5B0041432B /* LaunchScreen.xib */,
 				EC88C33019F85A5B0041432B /* Supporting Files */,
 				EC88C35C19F85D470041432B /* SleepyTime-Bridging-Header.h */,
+				EC60ADC119F8BDF100E1C335 /* SettingsController.swift */,
 			);
 			path = SleepyTime;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC60ADC219F8BDF100E1C335 /* SettingsController.swift in Sources */,
 				EC88C33519F85A5B0041432B /* ViewController.swift in Sources */,
 				EC88C35B19F85D150041432B /* EDSunriseSet.m in Sources */,
 				EC88C33319F85A5B0041432B /* AppDelegate.swift in Sources */,

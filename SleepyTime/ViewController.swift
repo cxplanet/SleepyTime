@@ -9,9 +9,10 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
     
     let locationManager = CLLocationManager()
+    @IBOutlet weak var settingsButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +33,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         var coord = locationObj.coordinate
         // determine sunrise/sunset for this location
         var tz = NSTimeZone.localTimeZone()
-        
-        
-
+        EDSunriseSet.sunrisesetWithTimezone(tz, latitude: coord.latitude, longitude: coord.longitude)
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
@@ -45,6 +44,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         var alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func showSettings() {
+        let popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("settings") as SettingsController
+        let nav = UINavigationController(rootViewController: popoverContent)
+        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let popover = nav.popoverPresentationController
+        popoverContent.preferredContentSize = CGSizeMake(400,400)
+        popover?.delegate = self
+        popover?.sourceView = self.view
+        popover?.sourceRect = self.settingsButton!.frame
+        self.presentViewController(nav, animated: true, completion: nil)        
     }
 
 
