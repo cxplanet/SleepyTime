@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        // don't go to sleep
+        application.idleTimerDisabled = true
         return true
     }
 
