@@ -63,10 +63,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         self.presentViewController(nav, animated: true, completion: nil)        
     }
     
-    @IBAction func startTimer(sender : UIButton!) {
+    @IBAction func toggleTimer(sender : UIButton!) {
         if(sender.selected)
         {
             stopTimer()
+            resetImages()
         }
         else
         {
@@ -83,7 +84,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
     
     func updateTimer()
     {
-        NSLog("Timer has fired");
         updateImages()
     }
     
@@ -146,19 +146,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         switch scaleFactor
         {
         case 1.0:
-            cgScaleFactor = 0.75
+            cgScaleFactor = 0.8
         case 2.0:
-            cgScaleFactor = 0.625
+            cgScaleFactor = 0.6
         case 3.0:
-            cgScaleFactor = 0.5
+            cgScaleFactor = 0.4
         case 4.0:
-            cgScaleFactor = 0.3
-        case 5.0:
             cgScaleFactor = 0.2
+        case 5.0:
+            cgScaleFactor = 0.005
         default:
             cgScaleFactor = 1.0
         }
         return cgScaleFactor
     }
+    
+    func resetImages()
+    {
+        NSLog("Reset star count: \(self.minorStars?.count)")
+        for minorStar in self.minorStars! {
+            UIView.animateWithDuration(0.5, animations: {
+                minorStar.transform = CGAffineTransformIdentity
+                minorStar.alpha = 1.0
+                })
+            minorStar.hidden = false
+        }
+    }
+    
+    
 }
 
