@@ -15,6 +15,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
     var scaleFactor = 1.0 as CGFloat;
     let locationManager = CLLocationManager()
     
+    let timerInterval = 2.0
+    let sunSlices = 5.0
+    
+    @IBOutlet weak var moonImage: UIImageView?
+    @IBOutlet weak var sunImage: UIImageView?
     @IBOutlet weak var settingsButton: UIButton?
     @IBOutlet var minorStars: Array<UIImageView>?
     
@@ -23,7 +28,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         locationManager.delegate = self
         // no need to draw battery power here
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-        self.view.backgroundColor = colorize(0x022935)
+        self.view.backgroundColor = colorize(0x022937)
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,6 +68,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         self.presentViewController(nav, animated: true, completion: nil)        
     }
     
+    func showSleepTime()
+    {
+        UIView.animateWithDuration(1.5, animations: {
+            self.view.backgroundColor = self.colorize(0x022937)
+            self.moonImage?.alpha = 1.0
+            self.sunImage?.alpha = 0.0
+            }, completion: {
+                (Bool) in
+                //self.moonImage?.hidden = true
+        })
+    }
+    
+    func showWakeTime()
+    {
+        self.sunImage?.hidden = false;
+        UIView.animateWithDuration(1.5, animations: {
+            self.view.backgroundColor = self.colorize(0x5c9bb6)
+            self.moonImage?.alpha = 0.0
+            self.sunImage?.alpha = 1.0
+            }, completion: {
+                (Bool) in
+                
+        })
+    }
+    
     @IBAction func toggleTimer(sender : UIButton!) {
         if(sender.selected)
         {
@@ -71,7 +101,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         }
         else
         {
+            showSleepTime()
             startTimer()
+        }
+        sender.selected = !sender.selected
+    }
+    
+    @IBAction func toggleWakeup(sender : UIButton!) {
+        if(sender.selected)
+        {
+            resetImages()
+            showSleepTime()
+        }
+        else
+        {
+            
+            showWakeTime()
         }
         sender.selected = !sender.selected
     }
@@ -95,9 +140,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
     
     func updateImages()
     {
-        NSLog("Star count: \(self.minorStars?.count)")
+        // short term hack to determine if we are done. We may want to programmatically
+        // add the star creation to an array, and pop them off as the become invisible
+        var hasVisibileStar = false
         for minorStar in self.minorStars! {
             if minorStar.hidden == false {
+                hasVisibileStar = true
                 let centerPoint = minorStar.center
                 // rotate and scale the star
                 UIView.animateWithDuration(1.5, animations: {
@@ -111,7 +159,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
                     }, completion: {
                         (Bool) in
                         self.scaleFactor++
-                        if self.scaleFactor > 5.0 {
+                        if self.scaleFactor > 2.0 {
                             
                             UIView.animateWithDuration(0.5,
                                 animations: {
@@ -127,6 +175,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
                 })
                 return
             }
+        }
+        if hasVisibileStar == false {
+            showWakeTime()
         }
     }
     
@@ -161,13 +212,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         return cgScaleFactor
     }
     
-    func resetImages()
+    func resetImages(showAll : Bool = true)
     {
+        let alphaVal : CGFloat = showAll ? 1.0 : 0.0
+        showSleepTime()
         NSLog("Reset star count: \(self.minorStars?.count)")
         for minorStar in self.minorStars! {
             UIView.animateWithDuration(0.5, animations: {
                 minorStar.transform = CGAffineTransformIdentity
-                minorStar.alpha = 1.0
+                minorStar.alpha = alphaVal
                 })
             minorStar.hidden = false
         }
