@@ -159,7 +159,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
                     }, completion: {
                         (Bool) in
                         self.scaleFactor++
-                        if self.scaleFactor > 2.0 {
+                        if self.scaleFactor > 4.0 {
                             
                             UIView.animateWithDuration(0.5,
                                 animations: {
@@ -194,17 +194,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
     {
         var cgScaleFactor : CGFloat
         
-        switch scaleFactor
+        switch scaleSize
         {
         case 1.0:
-            cgScaleFactor = 0.8
+            cgScaleFactor = 0.80
         case 2.0:
-            cgScaleFactor = 0.6
+            cgScaleFactor = 0.50
         case 3.0:
-            cgScaleFactor = 0.4
+            cgScaleFactor = 0.25
         case 4.0:
-            cgScaleFactor = 0.2
-        case 5.0:
             cgScaleFactor = 0.005
         default:
             cgScaleFactor = 1.0
