@@ -1,117 +1,133 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SleepyTime" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MO2-8S-Qg7">
-                                <rect key="frame" x="105" y="16" width="71" height="30"/>
-                                <state key="normal" title="Run Timer">
+                            <view contentMode="scaleToFill" id="6Km-Dd-msp">
+                                <rect key="frame" x="637" y="0.0" width="387" height="768"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="oiD-gh-0hV">
+                                        <rect key="frame" x="251" y="7" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="aiA-bz-vOG">
+                                        <rect key="frame" x="251" y="135" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="B5k-ti-edF">
+                                        <rect key="frame" x="251" y="263" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="LWC-n0-D6A">
+                                        <rect key="frame" x="251" y="391" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="YNg-DJ-1gG">
+                                        <rect key="frame" x="251" y="519" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="PsT-re-Asr">
+                                        <rect key="frame" x="251" y="647" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="sRb-QF-z64">
+                                        <rect key="frame" x="113" y="7" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="L93-1P-nhc">
+                                        <rect key="frame" x="113" y="135" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="a70-sH-BhS">
+                                        <rect key="frame" x="113" y="263" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="NOe-6l-RFy">
+                                        <rect key="frame" x="113" y="391" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="l88-Lr-0Pj">
+                                        <rect key="frame" x="113" y="519" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" id="2pC-Ox-Gl9">
+                                        <rect key="frame" x="113" y="647" width="112" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sS5-98-XSL">
+                                <rect key="frame" x="16" y="20" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="settings-dark">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" title="Stop Timer"/>
+                                <connections>
+                                    <action selector="showSettings" destination="BYZ-38-t0r" eventType="touchUpInside" id="44q-VR-8bM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MO2-8S-Qg7">
+                                <rect key="frame" x="100" y="30" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Demo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="startTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="scZ-ji-k72"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xpp-Xe-Vei">
-                                <rect key="frame" x="16" y="448" width="568" height="132"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="stars-seconds" translatesAutoresizingMaskIntoConstraints="NO" id="Vlt-3X-qtW">
-                                        <rect key="frame" x="220" y="2" width="128" height="128"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stars-seconds" translatesAutoresizingMaskIntoConstraints="NO" id="h1P-Rv-eFQ">
-                                        <rect key="frame" x="356" y="2" width="128" height="128"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stars-seconds" translatesAutoresizingMaskIntoConstraints="NO" id="TQc-ln-1im">
-                                        <rect key="frame" x="84" y="2" width="128" height="128"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stars-seconds" translatesAutoresizingMaskIntoConstraints="NO" id="7Dq-yi-EYC">
-                                        <rect key="frame" x="-52" y="2" width="128" height="128"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stars-seconds" translatesAutoresizingMaskIntoConstraints="NO" id="oiD-gh-0hV">
-                                        <rect key="frame" x="492" y="2" width="128" height="128"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="Vlt-3X-qtW" secondAttribute="centerX" id="Rwr-bN-e5H"/>
-                                    <constraint firstAttribute="centerY" secondItem="Vlt-3X-qtW" secondAttribute="centerY" id="SD7-4n-gks"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEx-8B-Elu">
-                                <rect key="frame" x="16" y="20" width="66" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="66" id="4iJ-SW-vMN"/>
-                                </constraints>
-                                <state key="normal" title="Settings"/>
-                                <connections>
-                                    <action selector="showSettings" destination="BYZ-38-t0r" eventType="touchUpInside" id="VMP-cd-5el"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Xpp-Xe-Vei" secondAttribute="centerX" id="6bF-p9-VUY"/>
-                            <constraint firstItem="pEx-8B-Elu" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Un8-nw-tCP"/>
-                            <constraint firstItem="pEx-8B-Elu" firstAttribute="baseline" secondItem="MO2-8S-Qg7" secondAttribute="baseline" id="XUf-Yy-lcR"/>
-                            <constraint firstItem="pEx-8B-Elu" firstAttribute="leading" secondItem="MO2-8S-Qg7" secondAttribute="trailing" constant="8" symbolic="YES" id="lTH-uK-PpA"/>
-                            <constraint firstItem="pEx-8B-Elu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="loc-Af-mtG"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pEx-8B-Elu" secondAttribute="bottom" constant="550" id="rXF-4u-ZzR"/>
-                        </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="1024" height="768"/>
                     <connections>
-                        <outlet property="settingsButton" destination="pEx-8B-Elu" id="Yaz-iE-ctG"/>
-                        <outletCollection property="minorStars" destination="7Dq-yi-EYC" collectionClass="NSMutableArray" id="Xt5-Rh-uqx"/>
-                        <outletCollection property="minorStars" destination="TQc-ln-1im" collectionClass="NSMutableArray" id="Ldy-iR-kIn"/>
-                        <outletCollection property="minorStars" destination="Vlt-3X-qtW" collectionClass="NSMutableArray" id="8QU-Mv-oqK"/>
-                        <outletCollection property="minorStars" destination="h1P-Rv-eFQ" collectionClass="NSMutableArray" id="mZW-NF-vX0"/>
-                        <outletCollection property="minorStars" destination="oiD-gh-0hV" collectionClass="NSMutableArray" id="jTv-0j-AmE"/>
+                        <outlet property="settingsButton" destination="sS5-98-XSL" id="2gK-5D-xZw"/>
+                        <outletCollection property="minorStars" destination="oiD-gh-0hV" collectionClass="NSMutableArray" id="KGg-O3-uh8"/>
+                        <outletCollection property="minorStars" destination="sRb-QF-z64" collectionClass="NSMutableArray" id="iNJ-Wd-nHb"/>
+                        <outletCollection property="minorStars" destination="L93-1P-nhc" collectionClass="NSMutableArray" id="Z80-1b-x94"/>
+                        <outletCollection property="minorStars" destination="aiA-bz-vOG" collectionClass="NSMutableArray" id="PxU-ZA-X2o"/>
+                        <outletCollection property="minorStars" destination="B5k-ti-edF" collectionClass="NSMutableArray" id="a8I-2Z-V0g"/>
+                        <outletCollection property="minorStars" destination="a70-sH-BhS" collectionClass="NSMutableArray" id="Vzt-tR-exu"/>
+                        <outletCollection property="minorStars" destination="NOe-6l-RFy" collectionClass="NSMutableArray" id="X47-BB-TA9"/>
+                        <outletCollection property="minorStars" destination="LWC-n0-D6A" collectionClass="NSMutableArray" id="p46-Q9-clG"/>
+                        <outletCollection property="minorStars" destination="YNg-DJ-1gG" collectionClass="NSMutableArray" id="5fw-cy-4Ds"/>
+                        <outletCollection property="minorStars" destination="l88-Lr-0Pj" collectionClass="NSMutableArray" id="tb4-7e-J5t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="535" y="620"/>
         </scene>
         <!--Settings Controller-->
         <scene sceneID="oFS-VF-a7n">
             <objects>
                 <viewController storyboardIdentifier="settings" id="x5d-Ya-xeL" customClass="SettingsController" customModule="SleepyTime" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MgU-7M-ED9"/>
-                        <viewControllerLayoutGuide type="bottom" id="OGr-De-DNX"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="02P-tg-xTn">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-6V-6sq">
-                                <rect key="frame" x="165" y="104" width="271" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="267" id="Gup-cz-hzK"/>
-                                </constraints>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="Oai-6V-6sq">
+                                <rect key="frame" x="25" y="104" width="271" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="changeBrightness:" destination="x5d-Ya-xeL" eventType="valueChanged" id="GJD-aC-2oA"/>
                                 </connections>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Oai-6V-6sq" secondAttribute="centerX" id="0r9-OH-ldk"/>
-                            <constraint firstItem="Oai-6V-6sq" firstAttribute="top" secondItem="MgU-7M-ED9" secondAttribute="bottom" constant="84" id="34I-Db-naC"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="screenBrightness" destination="Oai-6V-6sq" id="XYq-K3-CTW"/>
@@ -119,10 +135,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S46-fu-xjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="442" y="1080"/>
+            <point key="canvasLocation" x="565.75999999999999" y="1843.2"/>
         </scene>
     </scenes>
     <resources>
-        <image name="stars-seconds" width="256" height="256"/>
+        <image name="settings-dark" width="149" height="149"/>
+        <image name="star" width="213" height="215"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
 </document>
