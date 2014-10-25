@@ -171,6 +171,7 @@
                     <size key="freeformSize" width="400" height="400"/>
                     <connections>
                         <outlet property="screenBrightness" destination="Oai-6V-6sq" id="XYq-K3-CTW"/>
+                        <outlet property="timePicker" destination="D4i-J4-QZS" id="3Yn-Tf-YZB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S46-fu-xjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
