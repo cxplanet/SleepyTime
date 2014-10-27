@@ -54,7 +54,8 @@ class SettingsController: UIViewController
     @IBAction func changeBrightness(sender: UISlider)
     {
         NSLog("Current slider value: \(sender.value)")
-        
+        let mainScreen = UIScreen.mainScreen()
+        mainScreen.brightness = CGFloat(sender.value)
     }
     
 }
