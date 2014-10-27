@@ -14,11 +14,9 @@ class SettingsController: UIViewController
     @IBOutlet weak var screenBrightness: UISlider?
     @IBOutlet weak var timePicker: UIDatePicker?
     
-    let hoursKey = "alarmTimeHrs"
-    let minutesKey = "alarmTimeMins"
+    let alarmKey = "alarmTime"
     
-    var alarmHour : Int = 0
-    var alarmMin : Int = 0
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +28,14 @@ class SettingsController: UIViewController
         updateAlarmPickerWithUserDefaults()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        // for now, just blindly update alarm time
+        defaults.setObject(timePicker!.date, forKey: alarmKey)
+        super.viewWillDisappear(animated)
+    }
+    
     func timePickerChanged(datePicker:UIDatePicker) {
-        var dateFormatter = NSDateFormatter()
-        
-        let calendar = NSCalendar.currentCalendar()
-        let dateParts = calendar.components(.CalendarUnitHour | .CalendarUnitMinute, fromDate: timePicker!.date)
-        
-        NSLog("Hour is \(dateParts.hour)  minutes \(dateParts.minute)")
-        
-        updateAlarmDefaults(dateParts.hour, mins: dateParts.minute)
+        // nothing to do yet
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,25 +45,11 @@ class SettingsController: UIViewController
     
     func updateAlarmPickerWithUserDefaults()
     {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        if let hours = defaults.objectForKey(hoursKey) as? Int {
-            if let minutes = defaults.objectForKey(minutesKey) as? Int {
-                // set up the timer with a new date
-                NSLog("Defaults: Alarm hour is \(hours)  minutes \(minutes)")
-            }
+        if let alarm = defaults.objectForKey(alarmKey) as? NSDate {
+            timePicker?.setDate(alarm, animated: false)
         }
     }
     
-    func updateAlarmDefaults(hours : Int, mins : Int)
-    {
-        let defaults = NSUserDefaults.standardUserDefaults()
-    
-        defaults.setInteger(hours, forKey: hoursKey)
-        defaults.setInteger(mins, forKey: minutesKey)
-        
-        NSLog("Set defaults: Alarm hour is \(hours)  minutes \(mins)")
-    }
     
     @IBAction func changeBrightness(sender: UISlider)
     {
