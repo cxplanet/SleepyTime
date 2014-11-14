@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPresentationControllerDelegate {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     var timer = NSTimer()
     var scaleFactor = 1.0 as CGFloat;
@@ -17,6 +17,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
     
     let timerInterval = 2.0
     let sunSlices = 5.0
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    let alarmKey = "alarmTime"
+    let dayInSeconds = 24 * 60 * 60
     
     @IBOutlet weak var moonImage: UIImageView?
     @IBOutlet weak var sunImage: UIImageView?
@@ -25,9 +29,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
-        // no need to draw battery power here
-        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         self.view.backgroundColor = colorize(0x022937)
     }
 
@@ -36,18 +37,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
         // Dispose of any resources that can be recreated.
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        // parse the location
-        var locationArray = locations as NSArray
-        var locationObj = locationArray.lastObject as CLLocation
-        var coord = locationObj.coordinate
-        // determine sunrise/sunset for this location
-        var tz = NSTimeZone.localTimeZone()
-        EDSunriseSet.sunrisesetWithTimezone(tz, latitude: coord.latitude, longitude: coord.longitude)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if let alarmHour = defaults.objectForKey(Constants.alarmHour) as? Int {
+            startCountdown()
+        } else // its a reset data, or first open
+        {
+            showInitialSettings()
+        }
     }
     
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        
+    func showInitialSettings() {
+        let settings = self.storyboard?.instantiateViewControllerWithIdentifier("settings") as SettingsController
+        settings.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+        settings.modalTransitionStyle = .CrossDissolve
+        settings.view.backgroundColor = self.colorize(0x5c9bb6)
+        settings.doneButton!.addTarget(self, action: "dismissSettings:", forControlEvents: .TouchUpInside)
+        self.presentViewController(settings, animated: true, completion: nil)
+    }
+    
+    @IBAction func dismissSettings(sender: UIButton!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        startCountdown()
     }
     
     func showSettingsPopup() {
@@ -57,15 +68,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
     }
     
     @IBAction func showSettings() {
-        let popoverContent = self.storyboard?.instantiateViewControllerWithIdentifier("settings") as SettingsController
-        let nav = UINavigationController(rootViewController: popoverContent)
-        nav.modalPresentationStyle = UIModalPresentationStyle.Popover
-        let popover = nav.popoverPresentationController
-        popoverContent.preferredContentSize = CGSizeMake(400,400)
-        popover?.delegate = self
-        popover?.sourceView = self.view
-        popover?.sourceRect = self.settingsButton!.frame
-        self.presentViewController(nav, animated: true, completion: nil)        
+        self.showInitialSettings()
+    }
+    
+    func startCountdown()
+    {
+        let hour = defaults.objectForKey(Constants.alarmHour) as? Int
+        let minute = defaults.objectForKey(Constants.alarmMinute) as? Int
+        let now = NSDate()
+        let alarmTime = DateTimeUtils.calcTimeToAlarm(now, alarmHour: hour!, alarmMinutes: minute!)
     }
     
     func showSleepTime()
@@ -76,7 +87,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
             self.sunImage?.alpha = 0.0
             }, completion: {
                 (Bool) in
-                //self.moonImage?.hidden = true
+                self.moonImage!.hidden = true
         })
     }
     
@@ -114,17 +125,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UIPopoverPres
             showSleepTime()
         }
         else
-        {
-            
+        {  
             showWakeTime()
         }
         sender.selected = !sender.selected
     }
     
+    func calcAlarmTime()
+    {
+        let now = NSDate()
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let alarmTime = defaults.objectForKey("alarmKey") as? NSDate
+        {
+            
+            
+        }
+    }
+    
     func startTimer()
     {
         NSLog("Starting timer");
-        timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
     }
     
     func updateTimer()

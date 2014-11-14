@@ -15,6 +15,8 @@
 		EC88C33D19F85A5B0041432B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC88C33B19F85A5B0041432B /* LaunchScreen.xib */; };
 		EC88C34919F85A5B0041432B /* SleepyTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88C34819F85A5B0041432B /* SleepyTimeTests.swift */; };
 		EC88C35B19F85D150041432B /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = EC88C35A19F85D150041432B /* EDSunriseSet.m */; };
+		ECCE3AE51A1586FE00919228 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE3AE41A1586FE00919228 /* Constants.swift */; };
+		ECCE3AE71A158E4700919228 /* DateTimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE3AE61A158E4700919228 /* DateTimeUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		EC88C35919F85D150041432B /* EDSunriseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDSunriseSet.h; sourceTree = "<group>"; };
 		EC88C35A19F85D150041432B /* EDSunriseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDSunriseSet.m; sourceTree = "<group>"; };
 		EC88C35C19F85D470041432B /* SleepyTime-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SleepyTime-Bridging-Header.h"; sourceTree = "<group>"; };
+		ECCE3AE41A1586FE00919228 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		ECCE3AE61A158E4700919228 /* DateTimeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 				EC88C33019F85A5B0041432B /* Supporting Files */,
 				EC88C35C19F85D470041432B /* SleepyTime-Bridging-Header.h */,
 				EC60ADC119F8BDF100E1C335 /* SettingsController.swift */,
+				ECCE3AE41A1586FE00919228 /* Constants.swift */,
+				ECCE3AE61A158E4700919228 /* DateTimeUtils.swift */,
 			);
 			path = SleepyTime;
 			sourceTree = "<group>";
@@ -171,10 +177,11 @@
 				TargetAttributes = {
 					EC88C32C19F85A5B0041432B = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = E9E5623VEY;
+						DevelopmentTeam = 58GH6VJ4C3;
 					};
 					EC88C34119F85A5B0041432B = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = E9E5623VEY;
 						TestTargetID = EC88C32C19F85A5B0041432B;
 					};
 				};
@@ -223,10 +230,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECCE3AE71A158E4700919228 /* DateTimeUtils.swift in Sources */,
 				EC60ADC219F8BDF100E1C335 /* SettingsController.swift in Sources */,
 				EC88C33519F85A5B0041432B /* ViewController.swift in Sources */,
 				EC88C35B19F85D150041432B /* EDSunriseSet.m in Sources */,
 				EC88C33319F85A5B0041432B /* AppDelegate.swift in Sources */,
+				ECCE3AE51A1586FE00919228 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +386,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -388,6 +399,7 @@
 				INFOPLIST_FILE = SleepyTimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SleepyTime.app/SleepyTime";
 			};
 			name = Debug;
@@ -396,6 +408,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -403,6 +417,7 @@
 				INFOPLIST_FILE = SleepyTimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SleepyTime.app/SleepyTime";
 			};
 			name = Release;

@@ -13,6 +13,7 @@ class SettingsController: UIViewController
 {
     @IBOutlet weak var screenBrightness: UISlider?
     @IBOutlet weak var timePicker: UIDatePicker?
+    @IBOutlet weak var doneButton: UIButton?
     
     let alarmKey = "alarmTime"
     
@@ -28,9 +29,22 @@ class SettingsController: UIViewController
         updateAlarmPickerWithUserDefaults()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // need to clip from the superview
+        self.view.superview!.layer.cornerRadius = 32
+        self.view.superview!.layer.masksToBounds = true
+        self.doneButton!.layer.cornerRadius = 8
+        self.doneButton!.layer.masksToBounds = true
+    }
+    
     override func viewWillDisappear(animated: Bool) {
-        // for now, just blindly update alarm time
-        defaults.setObject(timePicker!.date, forKey: alarmKey)
+        let alarmTime = timePicker!.date
+        let calendar = NSCalendar.currentCalendar();
+        let hours = calendar.component(NSCalendarUnit.CalendarUnitHour, fromDate: alarmTime)
+        let minutes = calendar.component(NSCalendarUnit.CalendarUnitMinute, fromDate: alarmTime)
+        defaults.setObject(hours, forKey: Constants.alarmHour)
+        defaults.setObject(minutes, forKey: Constants.alarmMinute)
         super.viewWillDisappear(animated)
     }
     

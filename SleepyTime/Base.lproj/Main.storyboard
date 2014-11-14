@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -132,46 +132,71 @@
             <objects>
                 <viewController storyboardIdentifier="settings" id="x5d-Ya-xeL" customClass="SettingsController" customModule="SleepyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="02P-tg-xTn">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" id="D4i-J4-QZS">
-                                <rect key="frame" x="0.0" y="109" width="400" height="124"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="435860427.32563299">
-                                    <!--2014-10-24 16:20:27 +0000-->
-                                </date>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wake up time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QCh-NS-PPK">
-                                <rect key="frame" x="16" y="73" width="209" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OBX-RL-kDf">
-                                <rect key="frame" x="16" y="324" width="209" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="Oai-6V-6sq">
-                                <rect key="frame" x="50" y="369" width="300" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" id="OQk-0H-u6i">
+                                <rect key="frame" x="100" y="43" width="600" height="513"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What time do you want to wake up?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="akg-DW-OcC">
+                                        <rect key="frame" x="29" y="35" width="542" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KTu-5f-FeL">
+                                        <rect key="frame" x="8" y="296" width="209" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slider-dimmer" id="ADA-0Q-c2c">
+                                        <rect key="frame" x="8" y="361" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slider-brighter" id="Fy2-gW-vZK">
+                                        <rect key="frame" x="544" y="354" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YTp-83-i63">
+                                        <rect key="frame" x="183" y="440" width="234" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="I am done" backgroundImage="button-bkg">
+                                            <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" id="wXV-uN-uwu">
+                                        <rect key="frame" x="86" y="108" width="429" height="163"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="435860427.32563299">
+                                            <!--2014-10-24 16:20:27 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="6mj-3v-EUC">
+                                        <rect key="frame" x="52" y="362" width="482" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="changeBrightness:" destination="x5d-Ya-xeL" eventType="valueChanged" id="W2D-L3-g17"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="changeBrightness:" destination="x5d-Ya-xeL" eventType="valueChanged" id="GJD-aC-2oA"/>
-                                </connections>
-                            </slider>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="400"/>
+                    <size key="freeformSize" width="800" height="600"/>
                     <connections>
-                        <outlet property="screenBrightness" destination="Oai-6V-6sq" id="XYq-K3-CTW"/>
-                        <outlet property="timePicker" destination="D4i-J4-QZS" id="3Yn-Tf-YZB"/>
+                        <outlet property="doneButton" destination="YTp-83-i63" id="kpd-e7-Iji"/>
+                        <outlet property="screenBrightness" destination="6mj-3v-EUC" id="qQx-8c-K8D"/>
+                        <outlet property="timePicker" destination="wXV-uN-uwu" id="XIo-De-6lz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S46-fu-xjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -180,8 +205,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="button-bkg" width="26" height="28"/>
         <image name="moon" width="1213" height="1227"/>
         <image name="settings-dark" width="100" height="102"/>
+        <image name="slider-brighter" width="75" height="75"/>
+        <image name="slider-dimmer" width="52" height="52"/>
         <image name="star" width="213" height="214"/>
         <image name="sun" width="1630" height="838"/>
     </resources>
