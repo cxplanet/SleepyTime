@@ -15,22 +15,21 @@ class SettingsController: UIViewController
     @IBOutlet weak var timePicker: UIDatePicker?
     @IBOutlet weak var doneButton: UIButton?
     
-    let alarmKey = "alarmTime"
-    
     let defaults = NSUserDefaults.standardUserDefaults()
+    var timeChanged: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Settings"
         screenBrightness?.value = Float(UIScreen.mainScreen().brightness)
         
-        // see if we have an awake time already set
-        timePicker?.addTarget(self, action: Selector("timePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        //timePicker?.addTarget(self, action: Selector("timePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         updateAlarmPickerWithUserDefaults()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        timeChanged = false
         // need to clip from the superview
         self.view.superview!.layer.cornerRadius = 32
         self.view.superview!.layer.masksToBounds = true
@@ -45,6 +44,8 @@ class SettingsController: UIViewController
         let minutes = calendar.component(NSCalendarUnit.CalendarUnitMinute, fromDate: alarmTime)
         defaults.setObject(hours, forKey: Constants.alarmHour)
         defaults.setObject(minutes, forKey: Constants.alarmMinute)
+        defaults.setObject(alarmTime, forKey: Constants.alarmTime)
+        defaults.setObject(screenBrightness!.value, forKey: Constants.screenBrightness)
         super.viewWillDisappear(animated)
     }
     
@@ -59,7 +60,7 @@ class SettingsController: UIViewController
     
     func updateAlarmPickerWithUserDefaults()
     {
-        if let alarm = defaults.objectForKey(alarmKey) as? NSDate {
+        if let alarm = defaults.objectForKey(Constants.alarmTime) as? NSDate {
             timePicker?.setDate(alarm, animated: false)
         }
     }

@@ -70,18 +70,6 @@
                                     <action selector="showSettings" destination="BYZ-38-t0r" eventType="touchUpInside" id="44q-VR-8bM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MO2-8S-Qg7">
-                                <rect key="frame" x="85" y="30" width="100" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start Demo">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected" title="Reset Demo"/>
-                                <connections>
-                                    <action selector="toggleTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="thH-oz-Ngp"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon" id="hrJ-fU-CuH">
                                 <rect key="frame" x="106" y="49" width="606" height="613"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -98,8 +86,18 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="selected" title="Sleep"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MO2-8S-Qg7">
+                                <rect key="frame" x="462" y="697" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Restart">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" title="Reset Demo"/>
                                 <connections>
-                                    <action selector="toggleWakeup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oSe-xg-st0"/>
+                                    <action selector="resetAlarm:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NJd-2c-9eK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -109,6 +107,7 @@
                     <size key="freeformSize" width="1024" height="768"/>
                     <connections>
                         <outlet property="moonImage" destination="hrJ-fU-CuH" id="tjW-XG-mjq"/>
+                        <outlet property="restartButton" destination="MO2-8S-Qg7" id="yhq-46-aan"/>
                         <outlet property="settingsButton" destination="sS5-98-XSL" id="2gK-5D-xZw"/>
                         <outlet property="sunImage" destination="1p8-9Q-R8z" id="DiE-Fr-uSo"/>
                         <outletCollection property="minorStars" destination="oiD-gh-0hV" collectionClass="NSMutableArray" id="KGg-O3-uh8"/>
