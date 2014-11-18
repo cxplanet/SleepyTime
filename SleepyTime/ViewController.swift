@@ -27,6 +27,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     @IBOutlet weak var sunImage: UIImageView?
     @IBOutlet weak var settingsButton: UIButton?
     @IBOutlet weak var restartButton: UIButton?
+    @IBOutlet weak var countDown: UILabel!
     @IBOutlet var minorStars: Array<UIImageView>?
     
     override func viewDidLoad() {
@@ -120,7 +121,9 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     {
         if visibleStars.count > 0 {
             let (hours, mins) = DateTimeUtils.minutesAndHoursToEnd(alarmTime!)
-            NSLog("Time left: \(hours, mins)")
+            
+            let countdown = ("Time left: \(hours):\(mins)")
+            countDown.text = countdown
             if let star = visibleStars[0] as UIImageView? {
                 self.scaleImage(star, hour:hours, minute:mins)
             }
