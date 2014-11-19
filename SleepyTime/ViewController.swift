@@ -122,7 +122,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         if visibleStars.count > 0 {
             let (hours, mins) = DateTimeUtils.minutesAndHoursToEnd(alarmTime!)
             
-            let countdown = ("Time left: \(hours):\(mins)")
+            let countdown = String(format:"Time left: %02d:%02d", hours, mins)
             countDown.text = countdown
             if let star = visibleStars[0] as UIImageView? {
                 self.scaleImage(star, hour:hours, minute:mins)
@@ -287,6 +287,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
                 removeStar(star)
             }
         }
+        resetStars(visibleStars)
         // last, scale the remaining star accoring to the number of minutes left
         // in that hour
         let star = visibleStars[0]
@@ -320,6 +321,14 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
                 minorStar.alpha = alphaVal
                 })
             minorStar.hidden = false
+        }
+    }
+    
+    func resetStars(stars: Array <UIImageView>)
+    {
+        for minorStar in stars {
+            minorStar.hidden = false
+            minorStar.transform = CGAffineTransformIdentity
         }
     }
     
