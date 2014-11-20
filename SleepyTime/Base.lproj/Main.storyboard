@@ -113,7 +113,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="1024" height="768"/>
                     <connections>
-                        <outlet property="countDown" destination="z54-xu-xX9" id="DkE-Le-W1o"/>
+                        <outlet property="countDownLbl" destination="z54-xu-xX9" id="L9I-Uj-kJX"/>
                         <outlet property="moonImage" destination="hrJ-fU-CuH" id="tjW-XG-mjq"/>
                         <outlet property="restartButton" destination="MO2-8S-Qg7" id="yhq-46-aan"/>
                         <outlet property="settingsButton" destination="sS5-98-XSL" id="2gK-5D-xZw"/>

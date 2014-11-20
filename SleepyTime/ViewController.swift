@@ -27,7 +27,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     @IBOutlet weak var sunImage: UIImageView?
     @IBOutlet weak var settingsButton: UIButton?
     @IBOutlet weak var restartButton: UIButton?
-    @IBOutlet weak var countDown: UILabel!
+    @IBOutlet weak var countDownLbl: UILabel?
     @IBOutlet var minorStars: Array<UIImageView>?
     
     override func viewDidLoad() {
@@ -112,7 +112,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     
     func startTimer()
     {
-        NSLog("Starting timer");
+        NSLog("Starting timer")
         timer = NSTimer.scheduledTimerWithTimeInterval(1 * 10, target: self, selector: Selector("updateTimer"), userInfo: nil, repeats: true)
         isTimerRunning = true
     }
@@ -122,12 +122,20 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         if visibleStars.count > 0 {
             let (hours, mins) = DateTimeUtils.minutesAndHoursToEnd(alarmTime!)
             
-            let countdown = String(format:"Time left: %02d:%02d", hours, mins)
-            countDown.text = countdown
-            if let star = visibleStars[0] as UIImageView? {
-                self.scaleImage(star, hour:hours, minute:mins)
+            updateTimerLabel(hours, mins: mins)
+            
+            if hours < visibleStars.count {
+                if let star = visibleStars[0] as UIImageView? {
+                    self.scaleImage(star, hour:hours, minute:mins)
+                }
             }
         }
+    }
+    
+    func updateTimerLabel(hours: Int, mins: Int)
+    {
+        let countdown = String(format:"Time left: %02d:%02d", hours, mins)
+        countDownLbl!.text = countdown
     }
     
     func stopTimer()
@@ -277,21 +285,23 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             visibleStars.append(star)
         }
         
-        var (hours2Go, mins2Go) = DateTimeUtils.minutesAndHoursToEnd(alarmTime)
-        hours2Go++
+        let (hours2Go, mins2Go) = DateTimeUtils.minutesAndHoursToEnd(alarmTime)
+        updateTimerLabel(hours2Go, mins: mins2Go)
         
         // currently, we scale stars according to time - 1 star to 1 hour.
-        while (hours2Go < visibleStars.count){
-            if let star = visibleStars[0] as UIImageView?// in case of 0 length array
-            {
-                removeStar(star)
+        if hours2Go < visibleStars.count {
+            while (hours2Go < visibleStars.count - 1){
+                if let star = visibleStars[0] as UIImageView?// in case of 0 length array
+                {
+                    removeStar(star)
+                }
             }
+            resetStars(visibleStars)
+            // last, scale the remaining star accoring to the number of minutes left
+            // in that hour
+            let star = visibleStars[0]
+                scaleImage(star, hour: hours2Go, minute: mins2Go)
         }
-        resetStars(visibleStars)
-        // last, scale the remaining star accoring to the number of minutes left
-        // in that hour
-        let star = visibleStars[0]
-            scaleImage(star, hour: hours2Go, minute: mins2Go)
     }
     
     func removeStar(star: UIImageView)
@@ -326,10 +336,15 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     
     func resetStars(stars: Array <UIImageView>)
     {
+        NSLog("Reset star count: \(self.minorStars?.count)")
         for minorStar in stars {
-            minorStar.hidden = false
-            minorStar.transform = CGAffineTransformIdentity
+            UIView.animateWithDuration(0.2, animations: {
+                minorStar.alpha = 1.0
+                minorStar.hidden = false
+                minorStar.transform = CGAffineTransformIdentity
+            })
         }
+        currStarScale = 1
     }
     
     
