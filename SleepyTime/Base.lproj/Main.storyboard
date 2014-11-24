@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B23" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -67,7 +67,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showSettings" destination="BYZ-38-t0r" eventType="touchUpInside" id="44q-VR-8bM"/>
+                                    <segue destination="x5d-Ya-xeL" kind="modal" identifier="showSetting" modalPresentationStyle="formSheet" modalTransitionStyle="crossDissolve" id="SGB-f4-RCr"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon" id="hrJ-fU-CuH">
@@ -87,11 +87,10 @@
                                 </state>
                                 <state key="selected" title="Sleep"/>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MO2-8S-Qg7">
-                                <rect key="frame" x="462" y="697" width="100" height="30"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MO2-8S-Qg7">
+                                <rect key="frame" x="307" y="670" width="411" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Restart">
+                                <state key="normal" image="restart">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -137,7 +136,7 @@
         <!--Settings Controller-->
         <scene sceneID="oFS-VF-a7n">
             <objects>
-                <viewController storyboardIdentifier="settings" id="x5d-Ya-xeL" customClass="SettingsController" customModule="SleepyTime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings" modalTransitionStyle="crossDissolve" modalPresentationStyle="formSheet" id="x5d-Ya-xeL" customClass="SettingsController" customModule="SleepyTime" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="02P-tg-xTn">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -196,7 +195,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.36078431372549019" green="0.60784313725490191" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="800" height="600"/>
@@ -208,12 +207,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S46-fu-xjb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565" y="1843"/>
+            <point key="canvasLocation" x="689" y="1233"/>
         </scene>
     </scenes>
     <resources>
         <image name="button-bkg" width="26" height="28"/>
         <image name="moon" width="1213" height="1227"/>
+        <image name="restart" width="353" height="84"/>
         <image name="settings-dark" width="100" height="102"/>
         <image name="slider-brighter" width="75" height="75"/>
         <image name="slider-dimmer" width="52" height="52"/>

@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 
+
 class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     var timer = NSTimer()
@@ -23,6 +24,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     
     var alarmTime: NSDate?
     
+    let iosVersion = NSString(string: UIDevice.currentDevice().systemVersion).doubleValue
+    
     @IBOutlet weak var moonImage: UIImageView?
     @IBOutlet weak var sunImage: UIImageView?
     @IBOutlet weak var settingsButton: UIButton?
@@ -33,6 +36,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = colorize(0x022937)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,11 +50,11 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             startAlarmCountdown()
         } else // its a reset data, or first open
         {
-            showSettings()
+            settingsButton?.sendActionsForControlEvents(.TouchUpInside)
         }
     }
     
-    @IBAction func dismissSettings(sender: UIButton!) {
+    @IBAction func dismissSettings(sender: UIButton?) {
         self.dismissViewControllerAnimated(true, completion: {
             if self.isTimerRunning {
                 self.stopTimer()
@@ -61,10 +65,17 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     
     @IBAction func showSettings() {
         let settings = self.storyboard?.instantiateViewControllerWithIdentifier("settings") as SettingsController
-        settings.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+        if (iosVersion >= 8.0){
+            
+            settings.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+        }
+        else{
+            self.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+            self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+        }
         settings.modalTransitionStyle = .CrossDissolve
         settings.view.backgroundColor = self.colorize(0x5c9bb6)
-        settings.doneButton!.addTarget(self, action: "dismissSettings:", forControlEvents: .TouchUpInside)
+        settings.doneButton?.addTarget(self, action: "dismissSettings:", forControlEvents: .TouchUpInside)
         self.presentViewController(settings, animated: true, completion: nil)
     }
     
@@ -345,6 +356,23 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             })
         }
         currStarScale = 1
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+        if(segue.identifier == "showSetting"){
+//            if (iosVersion >= 8.0){
+//                
+//                //Leave this blank if you have set presentation style to "over current context"
+//                
+//                
+//            }
+//            else{  self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
+//                
+//                self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
+//                
+//            }
+        }
     }
     
     

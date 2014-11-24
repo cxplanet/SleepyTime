@@ -31,10 +31,10 @@ class SettingsController: UIViewController
         super.viewWillAppear(animated)
         timeChanged = false
         // need to clip from the superview
-        self.view.superview!.layer.cornerRadius = 32
-        self.view.superview!.layer.masksToBounds = true
-        self.doneButton!.layer.cornerRadius = 8
-        self.doneButton!.layer.masksToBounds = true
+        self.view.superview?.layer.cornerRadius = 32
+        self.view.superview?.layer.masksToBounds = true
+        self.doneButton?.layer.cornerRadius = 8
+        self.doneButton?.layer.masksToBounds = true
     }
     
     override func viewWillDisappear(animated: Bool) {
