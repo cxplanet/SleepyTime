@@ -35,8 +35,19 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = colorize(0x022937)
+        self.view.backgroundColor = SleepyTimeUtils.colorize(0x022937)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("restartTimer"),
+            name: Constants.RestartTimerNotification, object: nil)
+    }
+    
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,13 +65,18 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         }
     }
     
-    @IBAction func dismissSettings(sender: UIButton?) {
+    @IBAction func dismissSettings(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: {
-            if self.isTimerRunning {
-                self.stopTimer()
-            }
-            self.startAlarmCountdown()
+            self.restartTimer()
         })
+    }
+    
+    func restartTimer()
+    {
+        if self.isTimerRunning {
+            self.stopTimer()
+        }
+        self.startAlarmCountdown()
     }
     
     @IBAction func showSettings() {
@@ -74,7 +90,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.FormSheet
         }
         settings.modalTransitionStyle = .CrossDissolve
-        settings.view.backgroundColor = self.colorize(0x5c9bb6)
+        settings.view.backgroundColor = SleepyTimeUtils.colorize(0x5c9bb6)
         settings.doneButton?.addTarget(self, action: "dismissSettings:", forControlEvents: .TouchUpInside)
         self.presentViewController(settings, animated: true, completion: nil)
     }
@@ -91,7 +107,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     {
         
         UIView.animateWithDuration(1.5, animations: {
-            self.view.backgroundColor = self.colorize(0x022937)
+            self.view.backgroundColor = SleepyTimeUtils.colorize(0x022937)
             self.moonImage?.alpha = 1.0
             self.sunImage?.alpha = 0.0
             self.restartButton?.alpha = 0.0
@@ -106,7 +122,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         self.sunImage?.hidden = false;
         self.restartButton?.hidden = false
         UIView.animateWithDuration(1.5, animations: {
-            self.view.backgroundColor = self.colorize(0x5c9bb6)
+            self.view.backgroundColor = SleepyTimeUtils.colorize(0x5c9bb6)
             self.moonImage?.alpha = 0.0
             self.sunImage?.alpha = 1.0
             self.restartButton?.alpha = 1.0
@@ -248,15 +264,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         
         // we add the animation to the squares 'layer' property
         starImg.layer.addAnimation(anim, forKey: "animate position along path")
-    }
-    
-    // colorize function takes HEX and Alpha converts then returns aUIColor object
-    func colorize (hex: Int, alpha: Double = 1.0) -> UIColor {
-        let red = Double((hex & 0xFF0000) >> 16) / 255.0
-        let green = Double((hex & 0xFF00) >> 8) / 255.0
-        let blue = Double((hex & 0xFF)) / 255.0
-        var color: UIColor = UIColor( red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha) )
-        return color
     }
     
     func imageScaleFactor(minutes: Int) -> CGFloat

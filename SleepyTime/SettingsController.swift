@@ -31,6 +31,7 @@ class SettingsController: UIViewController
         super.viewWillAppear(animated)
         timeChanged = false
         // need to clip from the superview
+        self.view.backgroundColor = SleepyTimeUtils.colorize(0x5c9bb6)
         self.view.superview?.layer.cornerRadius = 32
         self.view.superview?.layer.masksToBounds = true
         self.doneButton?.layer.cornerRadius = 8
@@ -38,6 +39,12 @@ class SettingsController: UIViewController
     }
     
     override func viewWillDisappear(animated: Bool) {
+
+        super.viewWillDisappear(animated)
+    }
+    
+    func dismissDialog()
+    {
         let alarmTime = timePicker!.date
         let calendar = NSCalendar.currentCalendar();
         let hours = calendar.component(NSCalendarUnit.CalendarUnitHour, fromDate: alarmTime)
@@ -46,7 +53,8 @@ class SettingsController: UIViewController
         defaults.setObject(minutes, forKey: Constants.alarmMinute)
         defaults.setObject(alarmTime, forKey: Constants.alarmTime)
         defaults.setObject(screenBrightness!.value, forKey: Constants.screenBrightness)
-        super.viewWillDisappear(animated)
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func timePickerChanged(datePicker:UIDatePicker) {

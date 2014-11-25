@@ -13,9 +13,11 @@ struct Constants {
     static let alarmHour = "alarmHour"
     static let alarmMinute = "alarmMinute"
     static let screenBrightness = "brightness"
+    static let RestartTimerNotification = "restartTimerNotification"
     
     static let dayInSeconds = 24.0 * 60.0 * 60.0
     static let timerInterval = 2.0
+    
 }
 
 

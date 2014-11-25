@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC33266B1A245B3700A05A87 /* SleepyTimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC33266A1A245B3700A05A87 /* SleepyTimeUtils.swift */; };
 		EC60ADC219F8BDF100E1C335 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC60ADC119F8BDF100E1C335 /* SettingsController.swift */; };
 		EC88C33319F85A5B0041432B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88C33219F85A5B0041432B /* AppDelegate.swift */; };
 		EC88C33519F85A5B0041432B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88C33419F85A5B0041432B /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC33266A1A245B3700A05A87 /* SleepyTimeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepyTimeUtils.swift; sourceTree = "<group>"; };
 		EC60ADC119F8BDF100E1C335 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		EC88C32D19F85A5B0041432B /* SleepyTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepyTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC88C33119F85A5B0041432B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				EC60ADC119F8BDF100E1C335 /* SettingsController.swift */,
 				ECCE3AE41A1586FE00919228 /* Constants.swift */,
 				ECCE3AE61A158E4700919228 /* DateTimeUtils.swift */,
+				EC33266A1A245B3700A05A87 /* SleepyTimeUtils.swift */,
 			);
 			path = SleepyTime;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				EC88C35B19F85D150041432B /* EDSunriseSet.m in Sources */,
 				EC88C33319F85A5B0041432B /* AppDelegate.swift in Sources */,
 				ECCE3AE51A1586FE00919228 /* Constants.swift in Sources */,
+				EC33266B1A245B3700A05A87 /* SleepyTimeUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
