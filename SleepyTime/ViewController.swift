@@ -65,12 +65,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         }
     }
     
-    @IBAction func dismissSettings(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {
-            self.restartTimer()
-        })
-    }
-    
     func restartTimer()
     {
         if self.isTimerRunning {
@@ -134,7 +128,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     
     @IBAction func resetAlarm(sender : UIButton!) {
         showSleepTime()
-        resetImages()
+        resetStars(self.minorStars!)
+        initStarVisibility(alarmTime!, stars: self.minorStars!)
     }
     
     func startTimer()
@@ -270,7 +265,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     {
         var cgScaleFactor: CGFloat = 1.0
         
-        if minutes < 2 {
+        if minutes < 1 {
             cgScaleFactor = 0.005
         }
         else if minutes < 10 {

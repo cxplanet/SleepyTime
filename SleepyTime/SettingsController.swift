@@ -15,7 +15,7 @@ class SettingsController: UIViewController
     @IBOutlet weak var timePicker: UIDatePicker?
     @IBOutlet weak var doneButton: UIButton?
     
-    let defaults = NSUserDefaults.standardUserDefaults()
+    var defaults = NSUserDefaults.standardUserDefaults()
     var timeChanged: Bool?
     
     override func viewDidLoad() {
@@ -43,17 +43,22 @@ class SettingsController: UIViewController
         super.viewWillDisappear(animated)
     }
     
-    func dismissDialog()
+    @IBAction func dismissDialog()
     {
+        var hasChanged = true
+        // see if the alarm time has changed. If so, tell the app to restart its timer
         let alarmTime = timePicker!.date
-        let calendar = NSCalendar.currentCalendar();
-        let hours = calendar.component(NSCalendarUnit.CalendarUnitHour, fromDate: alarmTime)
-        let minutes = calendar.component(NSCalendarUnit.CalendarUnitMinute, fromDate: alarmTime)
-        defaults.setObject(hours, forKey: Constants.alarmHour)
-        defaults.setObject(minutes, forKey: Constants.alarmMinute)
-        defaults.setObject(alarmTime, forKey: Constants.alarmTime)
-        defaults.setObject(screenBrightness!.value, forKey: Constants.screenBrightness)
+        if let prevAlarmTime = defaults.objectForKey(Constants.alarmTime) as? NSDate
+        {
+            hasChanged = !alarmTime.isEqualToDate(prevAlarmTime)
+        }
+        if hasChanged
+        {
+            defaults.setObject(alarmTime, forKey: Constants.alarmTime)
+            NSNotificationCenter.defaultCenter().postNotificationName(Constants.RestartTimerNotification, object: nil)
+        }
         
+        defaults.setObject(screenBrightness!.value, forKey: Constants.screenBrightness)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
