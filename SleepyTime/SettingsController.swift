@@ -32,6 +32,7 @@ class SettingsController: UIViewController
         timeChanged = false
         // need to clip from the superview
         self.view.backgroundColor = SleepyTimeUtils.colorize(0x5c9bb6)
+        timePicker?.backgroundColor = SleepyTimeUtils.colorize(0x5c9bb6)
         self.view.superview?.layer.cornerRadius = 32
         self.view.superview?.layer.masksToBounds = true
         self.doneButton?.layer.cornerRadius = 8
@@ -74,8 +75,8 @@ class SettingsController: UIViewController
     func updateAlarmPickerWithUserDefaults()
     {
         if let alarm = defaults.objectForKey(Constants.alarmTime) as? NSDate {
-            timePicker?.setDate(alarm, animated: false)
-        }
+            timePicker?.setDate(alarm, animated: true)
+        } 
     }
     
     

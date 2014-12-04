@@ -76,16 +76,14 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     @IBAction func showSettings() {
         let settings = self.storyboard?.instantiateViewControllerWithIdentifier("settings") as SettingsController
         if (iosVersion >= 8.0){
-            
             settings.modalPresentationStyle = UIModalPresentationStyle.FormSheet
         }
         else{
-            self.modalPresentationStyle = UIModalPresentationStyle.FormSheet
-            self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+            settings.modalPresentationStyle = UIModalPresentationStyle.PageSheet
         }
         settings.modalTransitionStyle = .CrossDissolve
         settings.view.backgroundColor = SleepyTimeUtils.colorize(0x5c9bb6)
-        settings.doneButton?.addTarget(self, action: "dismissSettings:", forControlEvents: .TouchUpInside)
+        //settings.doneButton?.addTarget(self, action: "dismissSettings:", forControlEvents: .TouchUpInside)
         self.presentViewController(settings, animated: true, completion: nil)
     }
     
@@ -194,50 +192,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         }
 
     }
-    
-//    func updateImages()
-//    {
-//        // short term hack to determine if we are done. We may want to programmatically
-//        // add the star creation to an array, and pop them off as the become invisible
-//        var hasVisibileStar = false
-//        for minorStar in self.minorStars! {
-//            if minorStar.hidden == false {
-//                hasVisibileStar = true
-//                let centerPoint = minorStar.center
-//                // rotate and scale the star
-//                UIView.animateWithDuration(1.5, animations: {
-//                //UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 2.0, options: UIViewAnimationOptions.CurveEaseInOut, animations:{
-//                    let transScale = self.imageScaleFactor(self.scaleFactor)
-//                    let rotation = 360 * self.scaleFactor
-//                    let rotate = CGAffineTransformMakeRotation(rotation)
-//                    let scale = CGAffineTransformMakeScale(transScale, transScale)
-//                    minorStar
-//                    minorStar.transform = CGAffineTransformConcat(rotate, scale)
-//                    minorStar.center = centerPoint
-//                    }, completion: {
-//                        (Bool) in
-//                        self.scaleFactor++
-//                        if self.scaleFactor > 4.0 {
-//                            
-//                            UIView.animateWithDuration(0.5,
-//                                animations: {
-//                                    minorStar.alpha = 0.0
-//                                },
-//                                completion: { finished in
-//                                    minorStar.hidden = true
-//                            })
-//                            
-//                            // restore the scale factor
-//                            self.scaleFactor = 1.0
-//                        }
-//                })
-//                return
-//            }
-//        }
-//        if hasVisibileStar == false {
-//            showWakeTime()
-//        }
-//    }
     
     func shootingStar(starImg : UIImageView)
     {
@@ -363,17 +317,15 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if(segue.identifier == "showSetting"){
-//            if (iosVersion >= 8.0){
-//                
-//                //Leave this blank if you have set presentation style to "over current context"
-//                
-//                
-//            }
-//            else{  self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
-//                
-//                self.navigationController?.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
-//                
-//            }
+            var settings = segue.destinationViewController as SettingsController
+            if (iosVersion >= 8.0){
+                settings.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+            }
+            else{
+                // overcome weirdness in ios7
+                settings.preferredContentSize = CGSize(width: 600, height: 200)
+                settings.modalPresentationStyle = UIModalPresentationStyle.PageSheet
+            }
         }
     }
     
