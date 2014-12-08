@@ -16,6 +16,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     var scaleFactor = 1.0 as CGFloat;
     var visibleStars = Array<UIImageView>()
     var currStarScale: CGFloat = 1.0
+
+    let oneDayInterval : NSTimeInterval = 60*60*24
     
     //let sunSlices = 5.0
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -111,6 +113,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     
     func showWakeTime()
     {
+        alarmTime = alarmTime?.dateByAddingTimeInterval(oneDayInterval)
         self.sunImage?.hidden = false;
         self.restartButton?.hidden = false
         UIView.animateWithDuration(1.5, animations: {
